@@ -11,6 +11,7 @@ function HornImage(imageObject){
   this.keyword = imageObject.keyword;
   this.horn = imageObject.horn;
 }
+// doing the dom with Jquery and creating the instances of the objects
 
 HornImage.prototype.render = function() {
   $('main').append('<div class = "clone"></div>');
@@ -57,7 +58,7 @@ function renderSelect() {
   })
 }
 
-
+// doing the click handling after viewing
 
 $('select').on('change', changeView);
 
@@ -67,6 +68,4 @@ function changeView() {
   $('.' + selected).fadeIn();
 
 }
-
-
 readJSON();
