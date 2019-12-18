@@ -7,7 +7,7 @@ let pageTracker = 1;
 let totalPageTracker = 0;
 
 // Constructor for image objects
-
+// ****************************************
 const ImgObj = function (image_url, title, description, keyword, horns) {
   this.image_url = image_url;
   this.title = title;
@@ -17,7 +17,7 @@ const ImgObj = function (image_url, title, description, keyword, horns) {
 };
 
 // Read the JSON file from local directory
-
+// --------------------------------------------------
 function readJSON(filePath, fileType) {
   let tempImgArray = [];
   let tempKeywordArray = []
@@ -43,7 +43,7 @@ function readJSON(filePath, fileType) {
 }
 
 // Show image elements on initial page load
-
+// --------------------------------------------
 function showInitialPage(allImages, allKeyWords) {
   // Render all of the images
   let $divEle = $('<div></div>');
@@ -67,7 +67,7 @@ function showInitialPage(allImages, allKeyWords) {
 }
 
 // Render image element with Handlebar.js template
-
+// --------------------------------------------------------
 function renderWithHandleBars(imgObject, $parentEle) {
   const source = document.getElementById('img-template').innerHTML;
   const template = Handlebars.compile(source);
@@ -85,7 +85,7 @@ function renderWithHandleBars(imgObject, $parentEle) {
 
 
 // Populate the select dropdown with keywords
-
+// --------------------------------------------------
 function populateDropDown(allKeyWords) {
   const $dropdown = $('#filter');
   $dropdown.empty();
@@ -101,8 +101,29 @@ function resetSortByDropdown() {
   $('#sort').val('default');
 }
 
-// Render images after custom sort by title or horns
+// Sort images by object property, title or horns
+// Custom ascending string & number sort method
+// --------------------------------------
+function sortImagesByObjProp(images, type) {
+  images.sort((a, b) => {
+    a = a[type];
+    b = b[type];
 
+    if (type === 'title') {
+      a = a.toUpperCase();
+      b = b.toUpperCase();
+    }
+
+    if (a > b) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+}
+
+// Render images after custom sort by title or horns
+// ---------------------------------------------------------
 function renderSortedImages() {
   let $divEle = $(`main div:nth-child(${pageTracker})`);
   $divEle.children().remove();
@@ -113,7 +134,7 @@ function renderSortedImages() {
 }
 
 // Event Listener - On change, Filter by animal dropdown
-
+// ================================================
 $('#filter').on('change', function() {
   resetSortByDropdown();
 
@@ -131,6 +152,61 @@ $('#filter').on('change', function() {
   }
 });
 
+// Event Listener - On change, Sort by dropdown for titles and horns
+// ================================================
+$('#sort').on('change', function() {
+  // Get value from HTML dropdown
+  let $selection = $(this).val();
+
+  if ($selection === 'title') {
+    sortImagesByObjProp(allImagesArray[pageTracker - 1], 'title');
+    renderSortedImages();
+    populateDropDown(allKeyWords[pageTracker - 1]);
+  } else if ($selection === 'horns') {
+    sortImagesByObjProp(allImagesArray[pageTracker - 1], 'horns');
+    renderSortedImages();
+    populateDropDown(allKeyWords[pageTracker - 1]);
+  } else {
+    console.log('Default option was selected.');
+  }
+});
+
+// Event Listener - On click, pagination
+// ========================================
+$('#pagination').on('click', function(event) {
+  event.preventDefault();
+
+  resetSortByDropdown();
+
+  let page = $(event.target).html();
+  $('#pagination a').removeClass('active');
+  $(event.target).addClass('active');
+
+  $('main > div').hide(); // hide all containers that hold images
+  $('section').show(); // show all images
+
+  switch (page) {
+  case '1':
+    pageTracker = 1;
+    $('main div:nth-child(1)').show();
+    populateDropDown(allKeyWords[0]);
+    break;
+
+  case '2':
+    pageTracker = 2;
+    $('main div:nth-child(2)').show();
+    populateDropDown(allKeyWords[1]);
+    break;
+
+  default:
+    pageTracker = 1;
+    $('main div:nth-child(1)').show();
+    populateDropDown(allKeyWords[0]);
+  }
+});
+
+// Run on Ready!
+// --------------------------------------------------
 $(document).ready(function() {
   // Read JSON file from local data directory
   readJSON('./data/page-1.json', 'json');
