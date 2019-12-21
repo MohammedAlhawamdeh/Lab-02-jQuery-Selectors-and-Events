@@ -2,20 +2,18 @@
 <html>
   <head>
     <title>Lab 2</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS files -->
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/modules.css">
     <link rel="stylesheet" href="./css/layouts.css">
-
     <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Playball&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merienda&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Spirax&display=swap" rel="stylesheet">
-
     
   </head>
-
-  <!-- Script Template -->
   <script id="img-template" type="text/x-handlebars-template">
     <section keyword={{keyword}}>
       <img src={{image_url}}>
@@ -27,18 +25,50 @@
   </script>
 
   <body>
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">
+        ❅
+        </div>
+        <div class="snowflake">
+        ❅
+        </div>
+        <div class="snowflake">
+        ❆
+        </div>
+        <div class="snowflake">
+        ❄
+        </div>
+        <div class="snowflake">
+        ❅
+        </div>
+        <div class="snowflake">
+        ❆
+        </div>
+        <div class="snowflake">
+        ❄
+        </div>
+        <div class="snowflake">
+        ❅
+        </div>
+        <div class="snowflake">
+        ❆
+        </div>
+        <div class="snowflake">
+        ❄
+        </div>
+      </div>
     <header>
       <div class="background-img">
         <h1>The Gallery of Horns</h1>
       </div>
-      <div class="select-container">
+      <div data-aos="fade-up" class="select-container">
         <div class="custom-dropdown">
           <select id="filter">
             <option value="default">Filter by Keyword</option>
           </select>
         </div>
 
-        <div class="select-container2">
+        <div data-aos="fade-up" class="select-container2">
           <div class="custom-dropdown">
             <select id="sort">
               <option value="default">Sort by</option>
@@ -48,9 +78,9 @@
           </div>
         </div>
         
-        <div id="pagination">
+        <div data-aos="fade-up" id="pagination">
           <ul>
-            <li>Page:</li>
+            <li id="p"> Page:</li>
             <li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
           </ul>
@@ -61,12 +91,14 @@
     <main></main>
     
     <footer>
-      &copy; 2018 Code Fellows
+      &copy; 2019 M & R
     </footer>
-
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
     <script src="./js/app.js"></script>
-  
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
   </body>
 </html>
