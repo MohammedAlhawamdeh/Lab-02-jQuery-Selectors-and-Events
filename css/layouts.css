@@ -1,0 +1,17 @@
+@media (max-width: 1000px) {
+  header > div > h1 {
+    font-size: 90px;
+  }
+}
+
+@media (max-width: 866px) {
+  header > div > h1 {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 575px) {
+  header > div > h1 {
+    font-size: 50px;
+  }
+}

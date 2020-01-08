@@ -1,0 +1,213 @@
+header h1, header select {
+  text-align: center;
+}
+
+header .background-img {
+  cursor: pointer;
+  height: 215px;
+  background-image: url('../img/land-and-sea.png');
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 100px;
+  color: #222;
+  border: 1px solid rgb(112, 112, 112);
+  background-color: rgba(251, 212, 249, 0.746);
+  border-radius: 5px;
+  box-shadow: 5px 10px 8px #000000;
+  width: 1200px;
+  margin-left: 70px;
+  height: 115px;
+  transition: 800ms;
+}
+header h1:hover{
+    transform: scale(1.1);
+    transition: 800ms;
+}
+
+header {
+  width: 100%;
+}
+
+main {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+main div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1020px;
+}
+
+.select-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#pagination {
+  border-radius: 5px;
+  margin-left: 8px;
+}
+
+#pagination ul {
+  display: flex;
+}
+
+#pagination ul > li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+#pagination ul > li > a {
+  text-decoration: none;
+  font-size: 27px;
+  transition: background-color 0.4s ease-in-out;
+  color: rgb(0, 0, 0);
+  padding: 12px 20px;
+  border-radius: 100px;
+  border: 1px solid rgba(138, 81, 135, 0.445);
+  background-color: rgba(251, 212, 249, 0.746)
+}
+
+#pagination ul > li > a:hover {
+  background-color: #ff00dd;
+  transition: background-color 500ms ease-in-out;
+}
+
+#pagination ul > li:first-child {
+  font-size: 35px;
+}
+
+.active {
+  background-color: #b5b6b6;
+}
+
+
+/* START - Custom dropdown */
+/* https://codepen.io/silverdrop/pen/msrcE */
+.custom-dropdown {
+  font-size: 1.2em;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px; /* demo only */
+}
+
+.custom-dropdown select {
+  background-color: #e2e6e6;
+  cursor: pointer;
+  color: #333;
+  font-size: inherit;
+  padding: .5em;
+  padding-right: 2.5em;	
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+.custom-dropdown::before, .custom-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.custom-dropdown::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.custom-dropdown::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.custom-dropdown select[disabled] {
+  color: rgba(0,0,0,.3);
+}
+
+.custom-dropdown select[disabled]::after {
+  color: rgba(0,0,0,.1);
+}
+
+.custom-dropdown::before {
+  background-color: rgba(0,0,0,.15);
+}
+
+.custom-dropdown::after {
+  color: rgb(0, 0, 0);
+}
+/* END - Custom dropdown */
+
+img {
+  width: 300px;
+  height: 225px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+section {
+  background-color: rgba(255, 218, 253, 0.746);
+  margin: 15px;
+  width: 310px;
+  height: 331px;
+  border: 1px solid rgb(112, 112, 112);
+  border-radius: 5px;
+  box-shadow: 5px 10px 8px #000000;
+  text-align: center;
+  transition: 700ms;
+  cursor: pointer;
+}
+
+section:hover {
+  transform: scale(1.1);
+  transition: 700ms;
+
+}
+
+section h2 {
+  font-size: 25px;
+  width: 83%;
+  font-weight: bold;
+  margin: auto;
+  padding: 8px;
+  border-top: 1px solid #ccc;
+}
+
+section p {
+  font-size: 14px;
+  padding: 0px 5px;
+}
+
+footer {
+  text-align: right;
+  margin-right: 25px;
+  margin-top: 100px;
+}
+
